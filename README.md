@@ -1,6 +1,8 @@
 # SimpleFloatingPanl
 FloatingPanl 自定义，抖音评论弹窗交互式的关闭效果，
 
+[gif](https://github.com/yanmingLiu/SimpleFloatingPanl/blob/master/FloatingPanelDemo/Kapture%202021-03-26%20at%2012.39.55.gif)!
+
 ```
 
 import FloatingPanel
