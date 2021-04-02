@@ -1,7 +1,17 @@
 # SimpleFloatingPanl
-FloatingPanl 自定义，抖音评论弹窗交互式的关闭效果，
+FloatingPanl 自定义，抖音评论弹窗交互式的关闭效果。
 
-![gif](https://github.com/yanmingLiu/SimpleFloatingPanl/blob/master/FloatingPanelDemo/Kapture%202021-03-26%20at%2012.39.55.gif)
+### 一、没有tabbar的情况，并且fpc中没有跳转的逻辑，这种直接p
+一般我们的视图层级是这样的: window -> UITabBarController -> UINavigationController -> UIViewController，
+像抖音弹窗中的用户头像点击是需要跳转的，而且返回的时候fpc还是在最上层，这样就不能直接的present处理。
+
+
+
+![没有tabbar的情况](https://github.com/yanmingLiu/SimpleFloatingPanl/blob/master/FloatingPanelDemo/Kapture%202021-03-26%20at%2012.39.55.gif)
+
+
+1. 有tabbar的页面    
+抖音那种首页弹窗，由于有tabbar的关系，所以弹出评论的方式就应该已add的方式，并且需要在弹出和关闭的时候处理tabbar显示隐藏
 
 ```
 

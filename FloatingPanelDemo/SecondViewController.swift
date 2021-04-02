@@ -9,18 +9,17 @@ import UIKit
 
 class SecondViewController: UIViewController {
     let cellId = "cell"
+    
+    var canPush = false
 
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .clear
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        return tableView
-    }()
+    var tableView = UITableView(frame: .zero, style: .plain)
 
     var topView: UIView!
-
+    
+    deinit {
+        print("deinit SecondViewController")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +27,12 @@ class SecondViewController: UIViewController {
 
         topView = UIView()
         view.addSubview(topView)
+
+        tableView.backgroundColor = .clear
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = .black
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
 
         topView.translatesAutoresizingMaskIntoConstraints = false
         topView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -76,7 +81,7 @@ extension SecondViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 90
+        return 30
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,5 +97,11 @@ extension SecondViewController: UITableViewDataSource {
 
 extension SecondViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        if canPush {
+            let vc = UIViewController()
+            vc.view.backgroundColor = .red
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
